@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const AnimationType = {
   In: 'in',
-  Out: 'put'
+  Out: 'out'
 }
 
 const STEP = 0.05

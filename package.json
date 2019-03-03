@@ -1,6 +1,6 @@
 {
   "name": "rect-toast",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React toast component ",
   "main": "lib/index.js",
   "scripts": {
