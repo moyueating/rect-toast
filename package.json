@@ -1,14 +1,29 @@
 {
   "name": "rect-toast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React toast component ",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "build": "babel src -d lib",
+    "style": "rimraf dist && postcss src/index.css -u autoprefixer -d dist",
+    "compile": "rimraf lib && npm run build && npm run style",
+    "pro-publish": "rimraf build && cross-env NODE_ENV=production webpack --config webpack.config.pro.js",
+    "deploy":"npm run pro-publish && gh-pages -d build"
   },
-  "author": "zkj",
+  "author": "zkj <whutzkj@163.com> (https://github.com/moyueating)",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "style": "dist/index.css",
   "license": "MIT",
+  "homepage": "https://github.com/moyueating/rect-toast/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:moyueating/rect-toast.git"
+  },
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.0.0",
@@ -20,19 +35,25 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
+    "autoprefixer": "^9.4.9",
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "postcss-cli": "^6.1.2",
+    "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1",
-    "webpack-merge": "^4.2.1"
+    "webpack-dev-server": "^3.2.1"
   }
 }

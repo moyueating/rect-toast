@@ -7,10 +7,10 @@ module.exports = {
 
   devtool: 'cheap-eval-source-map',
 
-  entry: ['react-hot-loader/patch', './example/src/index.js'],
+  entry: ['./example/src/index.js'],
 
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './build'),
     filename: '[name].bundle.js'
   },
   devServer: {
@@ -22,7 +22,7 @@ module.exports = {
     disableHostCheck: true,
     historyApiFallback: true,
     // publicPath: '/public/',
-    contentBase: path.join(__dirname, "../dist"),
+    contentBase: path.join(__dirname, "../build"),
   },
   module: {
     rules: [
@@ -41,9 +41,9 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-        exclude: [
-          path.resolve(__dirname, 'node_modules')
-        ]
+        // exclude: [
+        //   path.resolve(__dirname, 'node_modules')
+        // ]
       },
     ]
   },
